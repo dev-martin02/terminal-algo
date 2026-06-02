@@ -40,16 +40,9 @@ def welcome(ctx: typer.Context) -> None:
     raise typer.Exit()
 
 
-class Topic(str, Enum):
-    recursion = "recursion"
-    linear_search = "linear search"
-    binary_search = "binary search"
-    bubble_sort = "bubble sort"
-
-
 @app.command()
 def train(
-    topic: Topic | None = typer.Argument(
+    topic: str | None = typer.Argument(
         None,
         help="Algorithm topic (e.g. recursion, linear_search).",
     ),
@@ -58,11 +51,9 @@ def train(
     no_open: bool = typer.Option(False, "--no-open", help="Don't open the file in VS Code after generating."),
 ) -> None:
     """Generate a new practice problem."""
-    name = custom or (topic.value if topic else None)
+    name = custom or topic
     if not name:
         console.print("\n[bold]Some Examples could be:[/bold]\n")
-        for t in Topic:
-            console.print(f"  {t.value}")
         name = typer.prompt("Enter the topic")
 
     with console.status(f"[bold green]Generating problem for {name}…"):

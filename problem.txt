@@ -1,20 +1,54 @@
 === PROBLEM ===
-Binary Tree Inorder Traversal
+Linear Search
 
-Implement a function to perform an inorder traversal of a binary tree and return the values in ascending order. The tree is represented using an adjacency list, where each index corresponds to a node and its value is a list of its children's indices.
+Find an element in a list by iterating over the list and checking each element until a match is found or the end of the list is reached.
+
+Given information:
+- A sorted array of integers.
+- The target value to be searched in the array.
+
+Unknown quantities:
+- The index of the target value in the array if found, otherwise -1.
+
+Objective: Write a function that performs linear search on a given list and returns the index of the target element if it exists, or -1 if not.
+
+Example inputs:
+  - [2, 5, 8, 12, 16]
+  - [3, 6, 9, 15]
+  - [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+
+Example outputs:
+  - For input [2, 5, 8, 12, 16], the function should return 3 (the index of the target element 16).
+  - For input [3, 6, 9, 15], the function is expected to return -1 as there is no match.
+  - For input [10, 20, 30, 40, 50, 60, 70, 80, 90, 100], the function should return 9 (the index of the target element 100).
+
+Constraints:
+- The size of the array is not specified and can vary.
+- All elements in the array are integers.
+- The search value to be searched for will always exist within the range of the list, i.e., it will never be negative or greater than the last element of the list.
+- The input list contains only unique integers.
+  - Note: This is a case-sensitive problem and does not involve floating point numbers.
+
+Programming languages allowed:
+  - Python
+  - C++
+  - Java
+  - JavaScript
+  - C#
 
 === TESTS ===
 Test 1:
-  input: [[1, [2, 4], [5]]
-  expected: 2, 4, 1, 5
+  input: [2, 5, 8, 12, 16]
+  expected: [3]
 
 Test 2:
-  input: [[1, [2, 4], [5]]
-  expected: 2, 4, 1, 5
+  input: [2, 5, 8, 12, 16]
+  expected: [3]
 
 === HINTS ===
-1. Use recursion to traverse the left subtree, visit the current node, and then traverse the right subtree.
+1. Use the range-based for loop to iterate over each element in the array. For each iteration, check if the current element matches the target value. If a match is found, return its index. Otherwise, continue iterating until all elements have been checked.
+
+In your function implementation, be sure to handle edge cases such as an empty list or when the target value does not exist in the array.
 
 === SOLUTION ===
 
-a
