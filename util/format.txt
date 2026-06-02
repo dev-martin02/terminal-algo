@@ -1,0 +1,20 @@
+
+=== PROBLEM ===
+Describe what the learner must implement.
+
+=== TESTS ===
+Test 1:
+  input:
+  expected:
+
+Test 2:
+  input:
+  expected:
+
+
+=== HINTS ===
+1.
+2.
+
+=== SOLUTION ===
+Reference approach or pseudocode (used in review mode).
