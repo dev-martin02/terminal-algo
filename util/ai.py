@@ -90,17 +90,21 @@ def review_solution(filepath: Path) -> str:
         },
     }
     text = filepath.read_text(encoding="utf-8")
+    solution = extract_section(text, "SOLUTION")
+    if not solution:
+        return "No solution to review. Add your code under === SOLUTION ===."
+
     messages = [
         {
             "role": "system",
             "content": (
                 "Review the student's code. Be brief: one sentence for good, "
-                "at most two short bullets for improve. No code, no rewrites."
+                "at most two short bullets for improve. No code, no rewrites. if there is no code, say so and don't invent a solution."
             ),
         },
         {
             "role": "user",
-            "content": f"Problem: {extract_section(text, 'PROBLEM')}\nSolution: {extract_section(text, 'SOLUTION')}",
+            "content": f"Problem: {extract_section(text, 'PROBLEM')}\nSolution: {solution}",
         },
     ]
     return format_review(json.loads(ai_call(messages, REVIEW_SCHEMA)))

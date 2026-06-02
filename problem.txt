@@ -1,82 +1,20 @@
 === PROBLEM ===
-Fibonacci Sequence
+Binary Tree Inorder Traversal
 
-Write a recursive function to calculate the nth Fibonacci number, where each number is the sum of the two preceding ones (1, 1, 2, 3, 5, 8, ...). If n is 0 or 1, return n. Otherwise, recursively call the function with n-1 and n-2 until you reach a base case that returns one of these values.
+Implement a function to perform an inorder traversal of a binary tree and return the values in ascending order. The tree is represented using an adjacency list, where each index corresponds to a node and its value is a list of its children's indices.
 
 === TESTS ===
 Test 1:
-  input: Yes
-  expected: [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+  input: [[1, [2, 4], [5]]
+  expected: 2, 4, 1, 5
+
+Test 2:
+  input: [[1, [2, 4], [5]]
+  expected: 2, 4, 1, 5
 
 === HINTS ===
-1. Consider using memoization to store previously calculated Fibonacci numbers to avoid redundant calculations.
-2. You can start by checking if n is even or odd, and then apply the recursive formula accordingly.
-3. A potential edge case is when n is negative. How would you handle this?
+1. Use recursion to traverse the left subtree, visit the current node, and then traverse the right subtree.
 
 === SOLUTION ===
 
-def fibonacci(n, memo=None):
-    """
-    Calculate the nth Fibonacci number using recursion with memoization.
-    
-    Args:
-        n: The position in the Fibonacci sequence
-        memo: Dictionary to store previously calculated values
-    
-    Returns:
-        The nth Fibonacci number, or None if n is negative
-    """
-    # Handle edge case: negative numbers
-    if n < 0:
-        return None
-    
-    # Initialize memoization dictionary
-    if memo is None:
-        memo = {}
-    
-    # Base cases
-    if n == 0 or n == 1:
-        return n
-    
-    # Check if already calculated
-    if n in memo:
-        return memo[n]
-    
-    # Recursive calculation with memoization
-    memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo)
-    return memo[n]
-
-
-def generate_fibonacci_sequence(count):
-    """
-    Generate the first n Fibonacci numbers.
-    
-    Args:
-        count: Number of Fibonacci numbers to generate
-    
-    Returns:
-        List of the first count Fibonacci numbers
-    """
-    sequence = []
-    for i in range(count):
-        sequence.append(fibonacci(i))
-    return sequence
-
-
-# Test
-if __name__ == "__main__":
-    # Generate the first 11 Fibonacci numbers as expected
-    result = generate_fibonacci_sequence(11)
-    expected = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
-    
-    print(f"Generated: {result}")
-    print(f"Expected:  {expected}")
-    print(f"Match: {result == expected}")
-    
-    # Test edge cases
-    print("\n--- Edge Cases ---")
-    print(f"fibonacci(0) = {fibonacci(0)}")
-    print(f"fibonacci(1) = {fibonacci(1)}")
-    print(f"fibonacci(10) = {fibonacci(10)}")
-    print(f"fibonacci(-5) = {fibonacci(-5)}")
-
+a
